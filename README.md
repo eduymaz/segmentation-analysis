@@ -7,7 +7,7 @@ Bu proje, Northwind veritabanı üzerinde farklı segmentasyon analizleri yapara
 - Elif Barutçu
 - Elif Erdal
 - Didar Arslan
-- Elif Duymaz
+- Elif Duymaz Yılmaz
 - Deniz Tunç
 - Hatice Nur Eriş
 - Elif Özbay
