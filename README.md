@@ -70,7 +70,29 @@ Proje, aşağıdaki ana bileşenlerden oluşmaktadır:
 
 ## Kullanım
 
-1. Veritabanı bağlantısını kurun:
+1. Ortam kurulumu yapın:
+#### pip ile kurulum:
+   ```bash
+   # Gerekli paketleri yükle
+   pip install -r requirements.txt
+
+   # Sanal ortam oluştur (opsiyonel)
+   python -m venv venv
+   source venv/bin/activate  # Linux/Mac
+   # veya
+   .\venv\Scripts\activate  # Windows
+   ```
+
+#### conda ile kurulum:
+   ```bash
+   # Conda ortamını oluştur
+   conda env create -f environment.yml
+
+   # Ortamı aktifleştir
+   conda activate problem_env
+   ```
+
+2. Veritabanı bağlantısını kurun:
    ```python
    user = ''
    password = ""
@@ -79,12 +101,12 @@ Proje, aşağıdaki ana bileşenlerden oluşmaktadır:
    database = ''
    ```
 
-2. API'yi başlatın:
+3. API'yi başlatın:
    ```bash
    uvicorn api:app --reload
    ```
 
-3. Swagger UI'a erişin:
+4. Swagger UI'a erişin:
    - Tarayıcınızda `http://localhost:8000/docs` adresine gidin
    - İstediğiniz segmentasyon analizini seçin ve çalıştırın
 
