@@ -1,9 +1,9 @@
-# Segmentasyon Analizi Projesi
+# Customer Segmentation Analysis Project 🎯
 
-Bu proje, Northwind veritabanı üzerinde farklı segmentasyon analizleri yaparak, müşteri, ürün, tedarikçi ve ülke bazlı gruplandırmaları incelemektedir. DBSCAN algoritması kullanılarak yapılan kümeleme analizleri, sıra dışı davranışları ve önemli segmentleri ortaya çıkarmaktadır.
+## Overview 📊
+This project performs comprehensive segmentation analysis on the Northwind database, utilizing advanced clustering techniques to identify customer, product, supplier, and country-based segments. The analysis employs DBSCAN algorithm to detect unusual patterns and significant segments within the data.
 
-## Proje Katkı Sağlayanları
-
+## Project Team 👥
 - Elif Barutçu
 - Elif Erdal
 - Didar Arslan
@@ -12,118 +12,146 @@ Bu proje, Northwind veritabanı üzerinde farklı segmentasyon analizleri yapara
 - Hatice Nur Eriş
 - Elif Özbay
 
-## Proje Yapısı
+## Project Components 🧩
 
-Proje, aşağıdaki ana bileşenlerden oluşmaktadır:
+### 1. Product Segmentation (`sample2.py`) 📦
+- Product performance analysis based on sales metrics
+- Identification of low-performing products and unusual product combinations
+- Sales pattern analysis and trend identification
 
-1. **sample2.py**: Ürün Segmentasyonu
-   - Ürünlerin satış performansına göre gruplandırılması
-   - Az satılan veya alışılmadık kombinasyonlarda geçen ürünlerin tespiti
+### 2. Supplier Segmentation (`sample3.py`) 🏭
+- Supplier performance evaluation based on product sales
+- Detection of underperforming suppliers
+- Analysis of supplier contribution patterns
 
-2. **sample3.py**: Tedarikçi Segmentasyonu
-   - Tedarikçilerin sağladıkları ürünlerin satış performansına göre gruplandırılması
-   - Az katkı sağlayan veya sıra dışı tedarikçilerin tespiti
+### 3. Country Segmentation (`sample4.py`) 🌍
+- Order pattern analysis by country
+- Identification of countries with unusual ordering behaviors
+- Regional market analysis
 
-3. **sample4.py**: Ülke Segmentasyonu
-   - Farklı ülkelerden gelen siparişlerin gruplandırılması
-   - Sıra dışı sipariş alışkanlığı olan ülkelerin tespiti
+### 4. Unified API (`api.py`) 🔌
+- Single endpoint for all segmentation analyses
+- Swagger UI integration for easy interaction
+- Comprehensive documentation
 
-4. **api.py**: Birleştirilmiş API
-   - Tüm segmentasyon analizlerini tek bir API üzerinden sunma
-   - Swagger UI ile kolay kullanım
+## Technology Stack 💻
+- **Backend**: Python, FastAPI
+- **Database**: PostgreSQL
+- **Data Analysis**: scikit-learn (DBSCAN, KMeans), pandas
+- **Visualization**: matplotlib
+- **ORM**: SQLAlchemy
 
-## Teknolojiler
+## Project Workflow 🔄
 
-- Python
-- FastAPI
+### 1. Data Collection 📥
+- Extraction of relevant data from PostgreSQL database
+- Custom SQL queries for each segmentation type
+- Data validation and integrity checks
+
+### 2. Data Preprocessing 🧹
+- Missing value handling
+- Feature selection and engineering
+- Data normalization using StandardScaler
+- Outlier detection and treatment
+
+### 3. Clustering Analysis 📊
+- Implementation of DBSCAN algorithm
+- Optimal parameter selection using KneeLocator
+- Cluster quality assessment using Silhouette scores
+- Performance optimization
+
+### 4. Visualization 📈
+- 2D cluster visualization
+- Silhouette score plots
+- Cluster distribution analysis
+- Interactive visualizations
+
+### 5. API Integration 🔄
+- RESTful API development with FastAPI
+- Swagger UI documentation
+- JSON response formatting
+- Error handling and validation
+
+## Installation ⚙️
+
+### Prerequisites 📋
+- Python 3.8+
 - PostgreSQL
-- scikit-learn (DBSCAN, KMeans)
-- pandas
-- matplotlib
-- SQLAlchemy
+- pip or conda package manager
 
-## Proje Akışı
+### Setup Instructions 📝
 
-1. **Veri Toplama**:
-   - PostgreSQL veritabanından ilgili tablolar üzerinden veri çekme
-   - Her segmentasyon için özel SQL sorguları kullanma
+#### Using pip:
+```bash
+# Create and activate virtual environment
+python -m venv venv
+source venv/bin/activate  # Linux/Mac
+# or
+.\venv\Scripts\activate  # Windows
 
-2. **Veri Ön İşleme**:
-   - Eksik verilerin temizlenmesi
-   - Özellik seçimi ve ölçeklendirme
-   - StandardScaler ile veri normalizasyonu
+# Install dependencies
+pip install -r requirements.txt
+```
 
-3. **Kümeleme Analizi**:
-   - DBSCAN algoritması ile kümeleme
-   - Optimal eps değerinin KneeLocator ile belirlenmesi
-   - Silhouette skorları ile küme kalitesinin analizi
+#### Using conda:
+```bash
+# Create and activate conda environment
+conda env create -f environment.yml
+conda activate problem_env
+```
 
-4. **Görselleştirme**:
-   - Kümeleme sonuçlarının 2D grafiklerle gösterimi
-   - Silhouette skorları grafiği
-   - Küme dağılımlarının renk kodlaması
+### Database Configuration 🔧
+```python
+# Configure in config.py
+DB_CONFIG = {
+    'user': 'your_username',
+    'password': 'your_password',
+    'host': 'localhost',
+    'port': '5432',
+    'database': 'northwind'
+}
+```
 
-5. **API Entegrasyonu**:
-   - FastAPI ile RESTful API oluşturma
-   - Swagger UI ile dokümantasyon
-   - JSON formatında sonuç döndürme
+## Usage 🚀
 
-## Kullanım
+1. Start the API server:
+```bash
+uvicorn api:app --reload
+```
 
-1. Ortam kurulumu yapın:
-#### pip ile kurulum:
-   ```bash
-   # Gerekli paketleri yükle
-   pip install -r requirements.txt
+2. Access the API documentation:
+- Open `http://localhost:8000/docs` in your browser
+- Explore available endpoints and their documentation
 
-   # Sanal ortam oluştur (opsiyonel)
-   python -m venv venv
-   source venv/bin/activate  # Linux/Mac
-   # veya
-   .\venv\Scripts\activate  # Windows
-   ```
+## API Endpoints 🌐
 
-#### conda ile kurulum:
-   ```bash
-   # Conda ortamını oluştur
-   conda env create -f environment.yml
+| Endpoint | Description | Parameters |
+|----------|-------------|------------|
+| `/api/product-clustering` | Product segmentation analysis | Optional: min_samples, eps |
+| `/api/supplier-clustering` | Supplier segmentation analysis | Optional: min_samples, eps |
+| `/api/country-clustering` | Country segmentation analysis | Optional: min_samples, eps |
 
-   # Ortamı aktifleştir
-   conda activate problem_env
-   ```
+## Output Format 📄
+Each endpoint returns a JSON response containing:
+- Cluster assignments
+- Outlier detection results
+- Statistical summaries
+- Visualization data
 
-2. Veritabanı bağlantısını kurun:
-   ```python
-   user = ''
-   password = ""
-   host = 'localhost'
-   port = ''
-   database = ''
-   ```
+## Contributing 🤝
+1. Fork the repository
+2. Create your feature branch (`git checkout -b feature/AmazingFeature`)
+3. Commit your changes (`git commit -m 'Add some AmazingFeature'`)
+4. Push to the branch (`git push origin feature/AmazingFeature`)
+5. Open a Pull Request
 
-3. API'yi başlatın:
-   ```bash
-   uvicorn api:app --reload
-   ```
+## License 📜
+This project is licensed under the MIT License - see the LICENSE file for details.
 
-4. Swagger UI'a erişin:
-   - Tarayıcınızda `http://localhost:8000/docs` adresine gidin
-   - İstediğiniz segmentasyon analizini seçin ve çalıştırın
+## Acknowledgments 🙏
+- Northwind database
+- scikit-learn development team
+- FastAPI community
 
-## Endpoint'ler
-
-- `/api/product-clustering`: Ürün segmentasyonu
-- `/api/supplier-clustering`: Tedarikçi segmentasyonu
-- `/api/country-clustering`: Ülke segmentasyonu
-
-Her endpoint, kümeleme sonuçlarını ve aykırı değerleri JSON formatında döndürür.
-
-## Sonuçlar
-
-Her analiz sonucunda:
-- Kümeleme sonuçları
-- Aykırı değerler
-- Görselleştirmeler
-- İstatistiksel özetler
-
-elde edilir. 
+## Turkish Version
+You can find the Turkish version of this README file [here](https://github.com/elfbrtc/Turkcell-GYK1-ClusterVision/tree/main).
